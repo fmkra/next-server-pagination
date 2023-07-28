@@ -1,9 +1,9 @@
 import { ContextProvider } from "../client/context";
 import { getPage } from "./getPage"
 
-export function withPagination(Component) {
+export function withPagination(Component, getNumberOfElements) {
     return async function ComponentWithPagination(props) {
-        const pageData = await getPage(props.searchParams);
+        const pageData = await getPage(props.searchParams, getNumberOfElements);
 
         const newProps = {
             ...props,
@@ -15,7 +15,7 @@ export function withPagination(Component) {
 
         return (
             <ContextProvider data={pageData}>
-                <Component {...props} page={newProps} />
+                <Component {...newProps} />
             </ContextProvider>
         )
     }
