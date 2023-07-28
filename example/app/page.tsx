@@ -1,31 +1,27 @@
-import { getPage, withPagination } from 'next-server-pagination';
+import { withPagination } from 'next-server-pagination';
 import Client from './client';
 
-const data = [
-    'data 1',
-    'data 2',
-    'data 3',
-    'data 4',
-    'data 5',
-    'data 6',
-    'data 7',
-    'data 8',
-    'data 9',
-    'data 10',
-    'data 11',
-    'data 12',
-    'data 13',
-    'data 14',
-];
+const data = new Array(100).fill(undefined).map((_, i) => `data ${i}`);
+
+async function getData(start: number, end: number) {
+    return data.slice(start, end + 1);
+}
 
 async function Page({ page }: any) {
+    const data = await getData(page.start, page.end);
+
     return (
         <>
-            {JSON.stringify(page)}
+            <div className="grid grid-cols-3 gap-4 mx-auto max-w-4xl p-2 my-4">
+                {data.map((element, index) => (
+                    <div className="rounded-lg border border-slate-400 p-4" key={index}>
+                        {element}
+                    </div>
+                ))}
+            </div>
             <Client />
         </>
     );
-    // return <ContextProvider value="123"></ContextProvider>;
 }
 
-export default withPagination(Page);
+export default withPagination(Page, async () => data.length);
