@@ -2,6 +2,7 @@ import { fileURLToPath } from 'node:url';
 import { createRequire } from 'node:module';
 
 import alias from '@rollup/plugin-alias';
+import typescript from '@rollup/plugin-typescript';
 import babel from '@rollup/plugin-babel';
 import commonjs from '@rollup/plugin-commonjs';
 import nodeResolve from '@rollup/plugin-node-resolve';
@@ -29,7 +30,7 @@ const outputOptions = {
 };
 
 const config = {
-  input: 'src/index.js',
+  input: 'src/index.tsx',
   output: [
     {
       dir: 'dist/esm',
@@ -54,6 +55,9 @@ const config = {
     }),
     nodeResolve(),
     commonjs({ include: ['node_modules/**'] }),
+    typescript({
+      exclude: ['example/**']
+    }),
     babel({
       babelHelpers: 'runtime',
       exclude: /node_modules/,
