@@ -1,2 +1,2 @@
-export * from './page';
-export * from './withPagination';
+export * from './pageData';
+export * from './usePagination';

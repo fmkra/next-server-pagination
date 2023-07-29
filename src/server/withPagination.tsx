@@ -1,6 +1,6 @@
 import { ContextProvider } from '../client/context';
 import { getPage } from './getPage';
-import type { WithPaginationProps } from '../types/withPagination';
+import { WithPaginationProps } from '../types';
 
 export function withPagination<Props extends { searchParams: Record<string, string> }>(
     Component: React.FC<Props & WithPaginationProps>,
@@ -11,10 +11,7 @@ export function withPagination<Props extends { searchParams: Record<string, stri
 
         const newProps = {
             ...props,
-            page: {
-                start: pageData.firstElement,
-                end: pageData.lastElement,
-            },
+            page: pageData,
         } as Props & WithPaginationProps;
 
         return (

@@ -1,4 +1,4 @@
-import { withPagination, WithPaginationPage } from 'next-server-pagination';
+import { withPagination, PageData } from 'next-server-pagination';
 import Client from './client';
 
 const data = new Array(100).fill(undefined).map((_, i) => `data ${i}`);
@@ -7,8 +7,8 @@ async function getData(start: number, end: number) {
     return data.slice(start, end + 1);
 }
 
-async function Page({ page }: { page: WithPaginationPage }) {
-    const data = await getData(page.start, page.end);
+async function Page({ page }: { page: PageData }) {
+    const data = await getData(page.firstElement, page.lastElement);
 
     return (
         <>

@@ -1,2 +1,2 @@
-import{jsx as t}from"react/jsx-runtime";import{ContextProvider as e}from"../client/context.js";import{getPage as n}from"./getPage.js";function r(r,a){return async function(s){const i=await n(s.searchParams,a),c=Object.assign(Object.assign({},s),{page:{start:i.firstElement,end:i.lastElement}});return t(e,{data:i,children:t(r,Object.assign({},c))})}}export{r as withPagination};
+import{jsx as t}from"react/jsx-runtime";import{ContextProvider as r}from"../client/context.js";import{getPage as e}from"./getPage.js";function n(n,a){return async function(s){const c=await e(s.searchParams,a),i=Object.assign(Object.assign({},s),{page:c});return t(r,{data:c,children:t(n,Object.assign({},i))})}}export{n as withPagination};
 //# sourceMappingURL=withPagination.js.map

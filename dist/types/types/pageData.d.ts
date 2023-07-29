@@ -5,3 +5,6 @@ export interface PageData {
     lastElement: number;
     elementsPerPage: number;
 }
+export interface WithPaginationProps {
+    page: PageData;
+}
