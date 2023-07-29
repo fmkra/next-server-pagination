@@ -10,9 +10,9 @@ export default function PageSwitcher() {
             <button
                 onClick={page.previous}
                 disabled={page.isFirst}
-                className="rounded-md p-1 border border-black"
+                className="rounded-md py-1 px-2 border border-black"
             >
-                Prev
+                &lt;
             </button>
             <p className="mx-4">
                 {page.current} / {page.total}
@@ -20,9 +20,9 @@ export default function PageSwitcher() {
             <button
                 onClick={page.next}
                 disabled={page.isLast}
-                className="rounded-md p-1 border border-black"
+                className="rounded-md py-1 px-2 border border-black"
             >
-                Next
+                &gt;
             </button>
         </div>
     );
