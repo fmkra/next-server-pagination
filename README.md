@@ -1,3 +1,8 @@
+# next-server-pagination
+
+[![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/fmkra/next-server-pagination/blob/main/LICENSE)
+[![npm version](https://img.shields.io/badge/npm-v1.0.0-brightgreen)](https://www.npmjs.com/package/next-server-pagination)
+
 Add pagination to your next.js app with one function. The library works with React Server Components, so you can limit data send to the client. Page navigation is fully customizable.
 
 ## Installation
