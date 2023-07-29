@@ -22,7 +22,6 @@
     "build": "pnpm run build:types && rollup -c",
     "lint": "eslint --ignore-path .gitignore --fix src",
     "format": "prettier --write src",
-    "prepare": "husky install"
   },
   "keywords": [
     "nextjs",
