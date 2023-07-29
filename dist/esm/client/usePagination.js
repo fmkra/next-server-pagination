@@ -1,0 +1,3 @@
+'use client';
+import{usePathname as t,useSearchParams as r,useRouter as n}from"next/navigation";import{useContext as e}from"react";import{Context as i}from"./context.js";const o=()=>{const o=e(i),s=t(),a=r(),c=n();if(null===o)throw new Error("usePagination must be used within a component wrapped in withPagination function");const u=t=>{const r=new URLSearchParams(Array.from(a.entries()));r.set("page",String(t)),c.push(`${s}?${r.toString()}`)},m=1===o.current,p=o.current===o.total;return Object.assign(Object.assign({},o),{set:u,next:()=>u(o.current+1),previous:()=>u(o.current-1),isFirst:m,isLast:p})};export{o as usePagination};
+//# sourceMappingURL=usePagination.js.map
