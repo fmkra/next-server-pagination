@@ -1,4 +1,4 @@
-import { withPagination } from 'next-server-pagination';
+import { withPagination, PageData } from 'next-server-pagination';
 import { data } from './data';
 import PageSwitcher from './pageSwitcher';
 
@@ -10,7 +10,8 @@ async function getData(start: number, end: number) {
     return data.slice(start, end + 1);
 }
 
-export default withPagination(async function ({ page }) {
+async function Page({ page }: { page: PageData }) {
+    // access page data ^ in your component
     const data = await getData(page.firstElement, page.lastElement);
 
     return (
@@ -28,4 +29,7 @@ export default withPagination(async function ({ page }) {
             <PageSwitcher />
         </>
     );
-}, getDataLength);
+}
+
+export default withPagination(Page, getDataLength);
+//    just add ^^^^

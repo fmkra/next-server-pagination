@@ -8,7 +8,7 @@ npm install next-server-pagination
 
 ## Usage
 
-Just wrap your server component with `withPagination` and pass a function that returns number of elements as a second argument (or a Promise\<number\>).
+Just wrap your server component with `withPagination` and pass a function that returns number (or a Promise\<number\>) of elements as a second argument.
 
 Then you can access page property inside your component and use it to limit data send to the client. Page propery is of type [`PageData`](#pagedata).
 
@@ -21,8 +21,9 @@ To add page navigation, create a client component and call `usePagination` hook.
 `page.tsx`
 
 ```tsx
-import { withPagination } from 'next-server-pagination';
+import { withPagination, PageData } from 'next-server-pagination';
 import { data } from './data';
+import PageSwitcher from './pageSwitcher';
 
 async function getDataLength() {
     return data.length;
@@ -33,6 +34,7 @@ async function getData(start: number, end: number) {
 }
 
 async function Page({ page }: { page: PageData }) {
+    // access page data ^ in your component
     const data = await getData(page.firstElement, page.lastElement);
 
     return (
@@ -53,6 +55,7 @@ async function Page({ page }: { page: PageData }) {
 }
 
 export default withPagination(Page, getDataLength);
+//    just add ^^^^
 ```
 
 `pageSwitcher.tsx`
