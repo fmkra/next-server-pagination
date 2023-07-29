@@ -8,10 +8,7 @@
         "moduleResolution": "node",
         "sourceMap": true,
         "rootDir": "src",
-        "jsx": "react-jsx",
-        "declaration": true,
-        "declarationDir": "dist/types",
-        "emitDeclarationOnly": true
+        "jsx": "react-jsx"
     },
     "include": ["src/**/*.ts", "src/**/*.tsx"],
     "exclude": ["node_modules", "**/*.spec.ts"]

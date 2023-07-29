@@ -33,17 +33,17 @@ const config = {
   input: 'src/index.ts',
   output: [
     {
-      dir: 'dist',
+      dir: 'dist/cjs',
       format: 'cjs',
       sourcemap: true,
       ...outputOptions
     },
-    // {
-    //   dir: 'dist/esm',
-    //   format: 'esm',
-    //   sourcemap: true,
-    //   ...outputOptions,
-    // }
+    {
+      dir: 'dist/esm',
+      format: 'esm',
+      sourcemap: true,
+      ...outputOptions,
+    }
   ],
   external: makeExternalPredicate([
     ...Object.keys(pkg.dependencies || {}),
@@ -55,7 +55,9 @@ const config = {
         src: fileURLToPath(new URL('src', import.meta.url)),
       },
     }),
-    typescript(),
+    typescript({
+      tsconfig: './tsconfig.build.json',
+    }),
     nodeResolve(),
     commonjs({ include: ['node_modules/**'] }),
     babel({
