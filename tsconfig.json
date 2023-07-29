@@ -1,0 +1,18 @@
+{
+    "compilerOptions": {
+        "target": "ES2017",
+        "module": "ESNext",
+        "lib": ["ES2017", "DOM"],
+        "strict": true,
+        "esModuleInterop": true,
+        "moduleResolution": "node",
+        "sourceMap": true,
+        "rootDir": "src",
+        "outDir": "dist",
+        "jsx": "react-jsx",
+        "declaration": true,
+        "declarationDir": "dist/types"
+    },
+    "include": ["src/**/*.ts", "src/**/*.tsx"],
+    "exclude": ["node_modules", "**/*.spec.ts"]
+}

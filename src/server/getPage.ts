@@ -1,4 +1,9 @@
-export const getPage = async (searchParams, getNumberOfElements) => {
+import type { Page } from '../types';
+
+export const getPage = async (
+    searchParams: Record<string, string>,
+    getNumberOfElements: () => number
+): Promise<Page> => {
     const numberOfElements = await getNumberOfElements();
     const elementsPerPage = Number(searchParams['per_page'] ?? 10);
     const current = Number(searchParams['page'] ?? 1);

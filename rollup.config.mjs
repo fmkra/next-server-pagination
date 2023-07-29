@@ -2,13 +2,13 @@ import { fileURLToPath } from 'node:url';
 import { createRequire } from 'node:module';
 
 import alias from '@rollup/plugin-alias';
-// import typescript from '@rollup/plugin-typescript';
 import babel from '@rollup/plugin-babel';
 import commonjs from '@rollup/plugin-commonjs';
 import nodeResolve from '@rollup/plugin-node-resolve';
 import terser from '@rollup/plugin-terser';
 import analyze from 'rollup-plugin-analyzer';
 import preserveDirectives from 'rollup-plugin-preserve-directives';
+import typescript from '@rollup/plugin-typescript';
 
 const require = createRequire(import.meta.url);
 const pkg = require('./package.json');
@@ -30,18 +30,20 @@ const outputOptions = {
 };
 
 const config = {
-  input: 'src/index.js',
+  input: 'src/index.ts',
   output: [
     {
-      dir: 'dist/esm',
-      format: 'esm',
-      ...outputOptions,
-    },
-    {
-      dir: 'dist/cjs',
+      dir: 'dist',
       format: 'cjs',
-      ...outputOptions,
+      sourcemap: true,
+      ...outputOptions
     },
+    // {
+    //   dir: 'dist/esm',
+    //   format: 'esm',
+    //   sourcemap: true,
+    //   ...outputOptions,
+    // }
   ],
   external: makeExternalPredicate([
     ...Object.keys(pkg.dependencies || {}),
@@ -53,17 +55,17 @@ const config = {
         src: fileURLToPath(new URL('src', import.meta.url)),
       },
     }),
+    typescript(),
     nodeResolve(),
     commonjs({ include: ['node_modules/**'] }),
-    // typescript({
-      // exclude: ['example/**']
-    // }),
     babel({
       babelHelpers: 'runtime',
+      extensions: ['.js', '.jsx', '.ts', '.tsx'],
       exclude: /node_modules/,
       plugins: [['@babel/plugin-transform-runtime', { version: babelRuntimeVersion }]],
       presets: [
         ['@babel/preset-env', { targets: 'defaults' }],
+        ['@babel/preset-typescript'],
         ['@babel/preset-react', { runtime: 'automatic' }],
       ],
     }),
