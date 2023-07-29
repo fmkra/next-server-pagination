@@ -2,9 +2,9 @@
 
 import { createContext, useContext } from 'react';
 import { usePathname, useSearchParams, useRouter } from 'next/navigation';
-import type { Page } from '../types';
+import type { PageData } from '../types';
 
-export const Context = createContext<Page | null>(null);
+export const Context = createContext<PageData | null>(null);
 
 export const usePagination = () => {
     const context = useContext(Context);
@@ -34,7 +34,7 @@ export function ContextProvider({
     data,
     children,
 }: {
-    data: Page;
+    data: PageData;
     children: React.ReactNode;
 }) {
     return <Context.Provider value={data}>{children}</Context.Provider>;

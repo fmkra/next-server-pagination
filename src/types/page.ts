@@ -1,4 +1,4 @@
-export interface Page {
+export interface PageData {
     current: number;
     total: number;
     firstElement: number;

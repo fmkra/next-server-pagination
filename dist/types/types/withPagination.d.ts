@@ -1,6 +1,7 @@
-export interface WithPaginationExtraProps {
-    page: {
-        start: number;
-        end: number;
-    };
+export interface WithPaginationPage {
+    start: number;
+    end: number;
+}
+export interface WithPaginationProps {
+    page: WithPaginationPage;
 }

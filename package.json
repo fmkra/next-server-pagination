@@ -13,7 +13,9 @@
     }
   },
   "files": [
-    "dist"
+    "dist/",
+    "LICENSE",
+    "README.md"
   ],
   "sideEffects": false,
   "scripts": {
@@ -21,7 +23,7 @@
     "build:types": "tsc --emitDeclarationOnly",
     "build": "pnpm run build:types && rollup -c",
     "lint": "eslint --ignore-path .gitignore --fix src",
-    "format": "prettier --write src",
+    "format": "prettier --write src"
   },
   "keywords": [
     "nextjs",

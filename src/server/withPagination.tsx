@@ -1,11 +1,11 @@
 import { ContextProvider } from '../client/context';
 import { getPage } from './getPage';
-import type { WithPaginationExtraProps } from '../types/withPagination';
+import type { WithPaginationProps } from '../types/withPagination';
 
 export function withPagination<Props extends { searchParams: Record<string, string> }>(
-    Component: React.FC<Props>,
-    getNumberOfElements: () => number
-): React.FC<Props & WithPaginationExtraProps> {
+    Component: React.FC<Props & WithPaginationProps>,
+    getNumberOfElements: () => number | Promise<number>
+): React.FC<Omit<Props, keyof WithPaginationProps>> {
     return async function ComponentWithPagination(props) {
         const pageData = await getPage(props.searchParams, getNumberOfElements);
 
@@ -15,7 +15,7 @@ export function withPagination<Props extends { searchParams: Record<string, stri
                 start: pageData.firstElement,
                 end: pageData.lastElement,
             },
-        };
+        } as Props & WithPaginationProps;
 
         return (
             <ContextProvider data={pageData}>
