@@ -1,0 +1,2 @@
+import{jsx as t}from"react/jsx-runtime";import{ContextProvider as e}from"../client/context.js";import{getPage as n}from"./getPage.js";function r(r,a){return async function(s){const i=await n(s.searchParams,a),c=Object.assign(Object.assign({},s),{page:{start:i.firstElement,end:i.lastElement}});return t(e,{data:i,children:t(r,Object.assign({},c))})}}export{r as withPagination};
+//# sourceMappingURL=withPagination.js.map
