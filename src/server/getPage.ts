@@ -5,7 +5,7 @@ export const getPage = async (
     getNumberOfElements: () => number | Promise<number>
 ): Promise<PageData> => {
     const numberOfElements = await getNumberOfElements();
-    const elementsPerPage = Number(searchParams['per_page'] ?? 10);
+    const elementsPerPage = Number(searchParams['size'] ?? 10);
     const current = Number(searchParams['page'] ?? 1);
     const total = Math.ceil(numberOfElements / elementsPerPage);
 
