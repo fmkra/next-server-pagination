@@ -1,7 +1,8 @@
 import type { PageData } from '../types';
+import { SearchParams } from './searchParams';
 
 export const getPage = async (
-    searchParams: Record<string, string>,
+    searchParams: SearchParams,
     getNumberOfElements: () => number | Promise<number>
 ): Promise<PageData> => {
     const numberOfElements = await getNumberOfElements();

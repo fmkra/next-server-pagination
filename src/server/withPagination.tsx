@@ -1,8 +1,9 @@
 import { ContextProvider } from '../client/context';
 import { getPage } from './getPage';
 import { WithPaginationProps } from '../types';
+import { SearchParams } from './searchParams';
 
-export function withPagination<Props extends { searchParams: Record<string, string> }>(
+export function withPagination<Props extends { searchParams: SearchParams }>(
     Component: React.FC<Props & WithPaginationProps>,
     getNumberOfElements: () => number | Promise<number>
 ): React.FC<Omit<Props, keyof WithPaginationProps>> {
