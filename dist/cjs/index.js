@@ -1,2 +1,2 @@
-"use strict";var e=require("./server/getPage.js"),t=require("./server/withPagination.js"),i=require("./client/context.js"),r=require("./client/usePagination.js");exports.getPage=e.getPage,exports.withPagination=t.withPagination,exports.Context=i.Context,exports.ContextProvider=i.ContextProvider,exports.usePagination=r.usePagination;
+"use strict";var e=require("./server/getPage.js"),i=require("./server/withPagination.js"),t=require("./client/usePagination.js");exports.getPage=e.getPage,exports.withPagination=i.withPagination,exports.usePagination=t.usePagination;
 //# sourceMappingURL=index.js.map

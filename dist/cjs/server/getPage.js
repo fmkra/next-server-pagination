@@ -1,2 +1,2 @@
-"use strict";exports.getPage=async(e,t)=>{var r,a;const l=await t(),s=Number(null!==(r=e.size)&&void 0!==r?r:10),i=Number(null!==(a=e.page)&&void 0!==a?a:1),n=Math.ceil(l/s),u=(Number(i)-1)*s;return{current:i,total:n,firstElement:u,lastElement:u+s-1,size:s}};
+"use strict";var e=require("./defaultSettings.js");exports.getPage=async(t,a,i)=>{var s,n;i=Object.assign(Object.assign({},e.defaultPaginationSettings),i);const r=await a(),l=Number(null!==(s=t.size)&&void 0!==s?s:i.defaultSize),u=Number(null!==(n=t.page)&&void 0!==n?n:1),g=Math.ceil(r/l),c=(Number(u)-1)*l;return{current:u,total:g,firstElement:c,lastElement:c+l-1,size:l}};
 //# sourceMappingURL=getPage.js.map

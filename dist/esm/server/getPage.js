@@ -1,2 +1,2 @@
-const e=async(e,t)=>{var r,l;const n=await t(),a=Number(null!==(r=e.size)&&void 0!==r?r:10),i=Number(null!==(l=e.page)&&void 0!==l?l:1),s=Math.ceil(n/a),u=(Number(i)-1)*a;return{current:i,total:s,firstElement:u,lastElement:u+a-1,size:a}};export{e as getPage};
+import{defaultPaginationSettings as e}from"./defaultSettings.js";const t=async(t,s,a)=>{var i,n;a=Object.assign(Object.assign({},e),a);const r=await s(),l=Number(null!==(i=t.size)&&void 0!==i?i:a.defaultSize),u=Number(null!==(n=t.page)&&void 0!==n?n:1),o=Math.ceil(r/l),c=(Number(u)-1)*l;return{current:u,total:o,firstElement:c,lastElement:c+l-1,size:l}};export{t as getPage};
 //# sourceMappingURL=getPage.js.map

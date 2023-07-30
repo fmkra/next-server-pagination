@@ -13,7 +13,7 @@ npm install next-server-pagination
 
 ## Usage
 
-Just wrap your server component with `withPagination` and pass a function that returns number (or a Promise\<number\>) of elements as a second argument.
+Just wrap your server component with `withPagination` and pass a function that returns number (or a Promise\<number\>) of elements as a second argument. The third, optional argument is a [settings object](#paginationsettings).
 
 Then you can access page property inside your component and use it to limit data you read from database. Page property is of type [`PageData`](#pagedata).
 
@@ -160,3 +160,9 @@ Includes all properties from `PageData` and:
 | `previous` | `() => void`             | Switches to the previous page.         |
 | `setPage`  | `(page: number) => void` | Switches to the specified page.        |
 | `setSize`  | `(size: number) => void` | Sets the number of elements per page.  |
+
+### PaginationSettings
+
+| Property      | Type     | Default | Description                                                                              |
+| ------------- | -------- | ------- | ---------------------------------------------------------------------------------------- |
+| `defaultSize` | `number` | `20`    | Default number of elements per page. It is used if size is not provided in search params |

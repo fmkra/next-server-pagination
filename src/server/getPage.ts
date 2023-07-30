@@ -1,12 +1,16 @@
-import type { PageData } from '../types';
+import type { PageData, PaginationSettings } from '../types';
 import { SearchParams } from '../types/searchParams';
+import { defaultPaginationSettings } from './defaultSettings';
 
 export const getPage = async (
     searchParams: SearchParams,
-    getNumberOfElements: () => number | Promise<number>
+    getNumberOfElements: () => number | Promise<number>,
+    settings?: Partial<PaginationSettings>
 ): Promise<PageData> => {
+    settings = { ...defaultPaginationSettings, ...settings };
+
     const numberOfElements = await getNumberOfElements();
-    const elementsPerPage = Number(searchParams['size'] ?? 10);
+    const elementsPerPage = Number(searchParams['size'] ?? settings.defaultSize);
     const current = Number(searchParams['page'] ?? 1);
     const total = Math.ceil(numberOfElements / elementsPerPage);
 
