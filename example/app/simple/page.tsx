@@ -1,6 +1,6 @@
 import { withPagination, PageData } from 'next-server-pagination';
-import { data } from './data';
-import PageSwitcher from './pageSwitcher';
+import { data } from '../data';
+import PageSwitcher from './switcher';
 
 async function getDataLength() {
     return data.length;
