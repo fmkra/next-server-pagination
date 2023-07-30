@@ -1,5 +1,5 @@
 import type { PageData } from '../types';
-import { SearchParams } from './searchParams';
+import { SearchParams } from '../types/searchParams';
 
 export const getPage = async (
     searchParams: SearchParams,

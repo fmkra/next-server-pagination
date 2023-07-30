@@ -1,3 +1,5 @@
+import { SearchParams } from './searchParams';
+
 export interface PageData {
     current: number;
     total: number;
@@ -8,4 +10,5 @@ export interface PageData {
 
 export interface WithPaginationProps {
     page: PageData;
+    searchParams: SearchParams;
 }
