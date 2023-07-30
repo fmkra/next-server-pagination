@@ -3,7 +3,7 @@
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/fmkra/next-server-pagination/blob/main/LICENSE)
 [![npm version](https://img.shields.io/badge/npm-v1.0.0-brightgreen)](https://www.npmjs.com/package/next-server-pagination)
 
-Add pagination to your next.js app with one function. The library works with React Server Components, so you can limit data send to the client. Page navigation is fully customizable.
+Add pagination to your next.js app with one function. The library works with React Server Components, so you can limit how much data you read from database and send to client. Page navigation is fully customizable.
 
 ## Installation
 
@@ -15,13 +15,15 @@ npm install next-server-pagination
 
 Just wrap your server component with `withPagination` and pass a function that returns number (or a Promise\<number\>) of elements as a second argument.
 
-Then you can access page property inside your component and use it to limit data send to the client. Page property is of type [`PageData`](#pagedata).
+Then you can access page property inside your component and use it to limit data you read from database. Page property is of type [`PageData`](#pagedata).
 
 **IMPORTANT!** This library uses `searchParams` to store page number and other data. If you use `withPagination` outside of `page.tsx`, you need to pass `searchParams` manually as a prop. (see [non page component example](example/app/non-page-component/page.tsx))
 
 To add page navigation, create a client component and call `usePagination` hook. It returns functions like `next`, `previous` (see [`UsePagination`](#usepagination) type)
 
 ## Example
+
+In this example `data` is a simple array, but you can for example use prisma with `skip` and `take` to limit data you read from database.
 
 `page.tsx`
 
