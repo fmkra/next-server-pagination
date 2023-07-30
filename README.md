@@ -15,9 +15,9 @@ npm install next-server-pagination
 
 Just wrap your server component with `withPagination` and pass a function that returns number (or a Promise\<number\>) of elements as a second argument.
 
-Then you can access page property inside your component and use it to limit data send to the client. Page propery is of type [`PageData`](#pagedata).
+Then you can access page property inside your component and use it to limit data send to the client. Page property is of type [`PageData`](#pagedata).
 
-**IMPORTANT!** This library uses `searchParams` to store page number and other data. If you use `withPagination` outside of `page.tsx`, you need to pass `searchParams` manually as a prop. (see TODO: add example)
+**IMPORTANT!** This library uses `searchParams` to store page number and other data. If you use `withPagination` outside of `page.tsx`, you need to pass `searchParams` manually as a prop. (see [non page component example](example/app/non-page-component/page.tsx))
 
 To add page navigation, create a client component and call `usePagination` hook. It returns functions like `next`, `previous` (see [`UsePagination`](#usepagination) type)
 
@@ -98,6 +98,43 @@ export default function PageSwitcher() {
 ```
 
 ## Types
+
+If you want to add add type to your component's props, you can either
+
+-   type `page` props as `PageData`
+
+```ts
+import { PageData } from 'next-server-pagination';
+
+function Page({ page }: { page: PageData }) {
+    ...
+}
+export default withPagination(Page, getDataLength);
+```
+
+-   whole props object as `WithPaginationProps` (then you can also use `searchParams`)
+
+```ts
+import { WithPaginationProps } from 'next-server-pagination';
+
+function Page({ page }: WithPaginationProps) {
+    ...
+}
+export default withPagination(Page, getDataLength);
+```
+
+-   or declare a component inside `withPagination` and props will be infered automatically
+
+```ts
+import { withPagination } from 'next-server-pagination';
+
+export default withPagination(
+    function Page({ page }) {
+        ...
+    },
+    getDataLength
+);
+```
 
 ### PageData
 
