@@ -101,13 +101,13 @@ export default function PageSwitcher() {
 
 ### PageData
 
-| Property          | Type     | Description                                                                            |
-| ----------------- | -------- | -------------------------------------------------------------------------------------- |
-| `current`         | `number` | Index of the page that user is currently on. It is an integer between `1` and `total`. |
-| `total`           | `number` | Total number of pages.                                                                 |
-| `firstElement`    | `number` | Index of the first element on the page.                                                |
-| `lastElement`     | `number` | Index of the last element on the page.                                                 |
-| `elementsPerPage` | `number` | Number of elements on the page.                                                        |
+| Property       | Type     | Description                                                                            |
+| -------------- | -------- | -------------------------------------------------------------------------------------- |
+| `current`      | `number` | Index of the page that user is currently on. It is an integer between `1` and `total`. |
+| `total`        | `number` | Total number of pages.                                                                 |
+| `size`         | `number` | Number of elements per page.                                                           |
+| `firstElement` | `number` | Index of the first element on the page.                                                |
+| `lastElement`  | `number` | Index of the last element on the page.                                                 |
 
 ### UsePagination
 
@@ -119,4 +119,5 @@ Includes all properties from `PageData` and:
 | `isLast`   | `boolean`                | Whether the user is on the last page.  |
 | `next`     | `() => void`             | Switches to the next page.             |
 | `previous` | `() => void`             | Switches to the previous page.         |
-| `set`      | `(page: number) => void` | Switches to the specified page.        |
+| `setPage`  | `(page: number) => void` | Switches to the specified page.        |
+| `setSize`  | `(size: number) => void` | Sets the number of elements per page.  |

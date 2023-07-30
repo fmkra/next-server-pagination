@@ -3,8 +3,9 @@
 import { usePathname, useSearchParams, useRouter } from 'next/navigation';
 import { useContext } from 'react';
 import { Context } from './context';
+import { UsePagination } from '../types';
 
-export const usePagination = () => {
+export const usePagination = (): UsePagination => {
     const context = useContext(Context);
     const path = usePathname();
     const searchParams = useSearchParams();
@@ -15,15 +16,22 @@ export const usePagination = () => {
             'usePagination must be used within a component wrapped in withPagination function'
         );
 
-    const set = (page: number) => {
+    const setPage = (page: number) => {
         const newSearchParams = new URLSearchParams(Array.from(searchParams.entries()));
         newSearchParams.set('page', String(page));
         router.push(`${path}?${newSearchParams.toString()}`);
     };
-    const next = () => set(context.current + 1);
-    const previous = () => set(context.current - 1);
+    const next = () => setPage(context.current + 1);
+    const previous = () => setPage(context.current - 1);
+
+    const setSize = (size: number) => {
+        const newSearchParams = new URLSearchParams(Array.from(searchParams.entries()));
+        newSearchParams.set('size', String(size));
+        router.push(`${path}?${newSearchParams.toString()}`);
+    };
+
     const isFirst = context.current === 1;
     const isLast = context.current === context.total;
 
-    return { ...context, set, next, previous, isFirst, isLast };
+    return { ...context, setPage, next, previous, setSize, isFirst, isLast };
 };

@@ -12,5 +12,5 @@ export const getPage = async (
     const firstElement = (Number(current) - 1) * elementsPerPage;
     const lastElement = firstElement + elementsPerPage - 1;
 
-    return { current, total, firstElement, lastElement, elementsPerPage };
+    return { current, total, firstElement, lastElement, size: elementsPerPage };
 };
